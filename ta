@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+import os 
+import sys
+#import xarray
+import argparse
+from utils import common
+
+
+
+
+def main(args):
+
+   varnames = common.get_variable_names(args.input, dims=int(args.dims))
+   for varname in varnames:
+      print varname
+
+
+if __name__ == "__main__":
+
+   parser = argparse.ArgumentParser(description="Time averaging utility from netCDF files.")
+   parser.add_argument("-i", "--input", help="The input directory for the netCDF files", required=False)
+   parser.add_argument("-o", "--output", help="The desired output file.", required=False)
+   parser.add_argument("-d", "--dims", help="Filter variables by dimension.", required=False)
+   args = parser.parse_args()
+
+   main(args)
+
+
+
+
+
