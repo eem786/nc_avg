@@ -2,11 +2,11 @@
 import os
 import sys
 import re
-import netCDF4 as nc
+import xarray
 
 def get_variable_names(args):
 
-    dataset = nc.Dataset(args.input, "r")
+    dataset = xarray.open_dataset(args.input, decode_times=False)
     all_variables = dataset.variables
     dataset.close()
     if args.variables:
